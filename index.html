@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-	<img src="./1S3t132P.jpg" alt="" srcset="">
+
+<body class="flex justify-center items-center h-screen">
+	<div class="max-w-md p-6 bg-gray-100 rounded-lg shadow-lg">
+		<div class="mb-4">
+			<p class="text-lg font-bold mb-2">Puzzle :</p>
+			<p class="text-gray-700 mb-4">Solve the following riddle: "What is my favorite sweet?"</p>
+			<input id="myInput" type="text" class="w-full p-2 border border-gray-300 rounded-md"
+				placeholder="Enter your text">
+		</div>
+		<div class="text-center">
+			<button id="myButton" class="px-4 py-2 text-white bg-blue-500 rounded-md">Riddle me this</button>
+		</div>
+		<div id="imageContainer" class="mt-4 text-center">
+			<img id="myImageHello" class="hidden" src="hello.jpg" alt="Hello World Image">
+			<img id="myImageIncorrect" class="hidden" src="wrong.jpeg" alt="Incorrect Guess Image">
+		</div>
+	</div>
+
+	<script>
+		// Get references to the input field, button, and image containers
+		const inputField = document.getElementById('myInput');
+		const button = document.getElementById('myButton');
+		const imageContainer = document.getElementById('imageContainer');
+		const imageHello = document.getElementById('myImageHello');
+		const imageIncorrect = document.getElementById('myImageIncorrect');
+
+		// Add click event listener to the button
+		button.addEventListener('click', () => {
+			const inputValue = inputField.value;
+			if (btoa(inputValue) === 'YmFzaG1lZW5h')
+			{
+				// Display the 'hello' image
+				imageHello.classList.remove('hidden');
+				// Hide the 'incorrect' image
+				imageIncorrect.classList.add('hidden');
+			} else
+			{
+				// Hide the 'hello' image
+				imageHello.classList.add('hidden');
+				// Display the 'incorrect' image
+				imageIncorrect.classList.remove('hidden');
+			}
+		});
+	</script>
 </body>
+
 </html>

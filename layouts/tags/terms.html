@@ -1,0 +1,26 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ i18n "tags" }}</h1>
+</section>
+
+<div class="tag-cards">
+  {{ range .Data.Terms.Alphabetical }}
+  {{ $slug := .Name | urlize }}
+  {{ $imgPath := printf "/images/tags/%s.jpg" $slug }}
+  <a href="{{ .Page.RelPermalink }}" class="tag-card">
+    <div class="tag-card__image">
+      <img
+        src="{{ $imgPath }}"
+        alt="{{ .Name }}"
+        loading="lazy"
+        onerror="this.closest('.tag-card__image').classList.add('tag-card__image--placeholder'); this.remove();"
+      />
+    </div>
+    <div class="tag-card__body">
+      <span class="tag-card__name">{{ .Name }}</span>
+      <span class="tag-card__count">{{ .Count }}</span>
+    </div>
+  </a>
+  {{ end }}
+</div>
+{{ end }}

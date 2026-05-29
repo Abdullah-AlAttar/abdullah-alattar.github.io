@@ -302,6 +302,77 @@ ul {
   }
 }
 
+// Tag Cards (tags/terms page)
+.tag-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+  padding-block: 2rem;
+}
+
+.tag-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-surface);
+  box-shadow: 0 2px 8px var(--color-text-a06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--color-text-a10);
+  }
+
+  &__image {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--color-accent-a08);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+
+      &::after {
+        content: '🍽️';
+      }
+    }
+  }
+
+  &__body {
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  &__name {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &__count {
+    background: var(--color-accent-a10);
+    color: var(--color-accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+}
+
 // Page Header
 .page-header {
   padding-block: 2rem 1rem;

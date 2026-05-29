@@ -58,10 +58,24 @@ ingredients:
 3. الخطوة الثالثة...
 ```
 
-### 3. أضف صورة (اختياري)
+### 3. نزّل صورة تلقائياً
 
-ضع صورة باسم `featured.jpg` (أو `.png`/`.webp`) في نفس مجلد الوصفة.
+استخدم السكريبت لتنزيل صورة مناسبة من Pexels (مجاني):
+
+```bash
+PEXELS_API_KEY=your_key uv run scripts/download_recipe_images.py <slug>
+
+# أو مع كويري مخصص
+PEXELS_API_KEY=your_key uv run scripts/download_recipe_images.py <slug> "search query"
+
+# إعادة تنزيل صورة موجودة
+PEXELS_API_KEY=your_key uv run scripts/download_recipe_images.py <slug> --force
+```
+
+أو ضع صورة يدوياً باسم `featured.jpg` (أو `.png`/`.webp`) في نفس مجلد الوصفة.
 Hugo يقوم تلقائياً بتصغيرها وتحويلها لـ WebP.
+
+> احصل على مفتاح API مجاني من [pexels.com/api](https://www.pexels.com/api/)
 
 ### 4. انشر
 
@@ -84,6 +98,8 @@ GitHub Actions يبني الموقع ويفهرس البحث وينشر تلقا
 ├── layouts/                   # القوالب
 ├── assets/scss/               # الأنماط (SCSS)
 ├── .github/workflows/         # CI/CD pipeline
+├── scripts/
+│   └── download_recipe_images.py  # تنزيل صور الوصفات من Pexels
 └── Taskfile.yml               # أوامر مختصرة
 ```
 

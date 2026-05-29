@@ -39,10 +39,16 @@ ingredients:
 3. **Tags**: Pick 3-5 relevant tags in Arabic. Reuse existing tags when possible: دجاج، لحمة، بامية، بزاليا، بطاطا، يخنة، شوربة، طبخ عربي، صحي، سهل، خضار، ليمون
 4. **Slug**: Use a romanized/transliterated short name. No spaces, use hyphens.
 5. **Date**: Use today's date.
-6. **Image**: If the user provides an image, save it as `featured.jpg` in the same folder. Otherwise skip it.
+6. **Image**: If the user provides an image, save it as `featured.jpg` in the same folder. Otherwise, download one automatically using the image script:
+   ```bash
+   PEXELS_API_KEY=<key> uv run scripts/download_recipe_images.py <slug> "<english search query>"
+   ```
+   Pick a descriptive English query for the dish. If `PEXELS_API_KEY` is not set in the environment, skip the download and note it for the user.
 7. **Notes/tips** from the user that aren't steps should go as a blockquote (`> **ملاحظة:**`) at the end.
 8. **Do NOT** translate or formalize the Arabic. Keep the original dialect (شامي/levantine).
 
 ## After Creating
 
-Run `hugo --minify` to verify the recipe builds without errors. Report the recipe title and path to the user.
+Run `hugo --minify` to verify the recipe builds without errors. Report the recipe title, path, and whether an image was downloaded to the user.
+
+Also remind the user to add the new slug → query entry to the `RECIPES` dict in `scripts/download_recipe_images.py` so future bulk runs include it.

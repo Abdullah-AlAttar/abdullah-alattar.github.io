@@ -36,6 +36,7 @@
       "hero",
       "main",
       "nav",
+      "nav__hamburger",
       "nav__inner",
       "nav__links",
       "nav__logo",
@@ -63,6 +64,8 @@
     ],
     "ids": [
       "home-search",
+      "nav-hamburger",
+      "nav-links",
       "search",
       "theme-toggle",
       "طريقة-التحضير"

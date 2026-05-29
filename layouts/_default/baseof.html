@@ -11,6 +11,7 @@
   {{- partial "footer.html" . -}}
   <script>
     (function () {
+      // Theme toggle
       var btn = document.getElementById('theme-toggle');
       var root = document.documentElement;
       function update() {
@@ -28,6 +29,21 @@
           localStorage.removeItem('theme');
         }
         update();
+      });
+
+      // Hamburger menu
+      var hamburger = document.getElementById('nav-hamburger');
+      var navLinks = document.getElementById('nav-links');
+      hamburger.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('is-open');
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // Close menu when a link is clicked
+      navLinks.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          navLinks.classList.remove('is-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
       });
     })();
   </script>

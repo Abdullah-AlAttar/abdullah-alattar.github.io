@@ -1,7 +1,10 @@
 <nav class="nav">
   <div class="nav__inner">
     <a href="{{ site.Home.RelPermalink }}" class="nav__logo">{{ i18n "site_title" }}</a>
-    <ul class="nav__links">
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="فتح القائمة" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="nav-links">
       <li><a href="{{ site.Home.RelPermalink }}">{{ i18n "home" }}</a></li>
       <li><a href="{{ "recipes/" | relURL }}">{{ i18n "all_recipes" }}</a></li>
       <li><a href="{{ "tags/" | relURL }}">{{ i18n "tags" }}</a></li>

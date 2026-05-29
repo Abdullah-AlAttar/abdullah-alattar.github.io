@@ -1,9 +1,35 @@
-// Design Tokens
-$color-bg: #fdf6ee;
-$color-surface: #fff8f0;
-$color-accent: #c0622f;
-$color-text: #2d1e0f;
-$color-muted: #8a6a52;
+// Design Tokens — default (warm) theme
+:root {
+  --color-bg: #fdf6ee;
+  --color-surface: #fff8f0;
+  --color-accent: #c0622f;
+  --color-text: #2d1e0f;
+  --color-muted: #8a6a52;
+  --color-accent-a08: rgba(192, 98, 47, 0.08);
+  --color-accent-a10: rgba(192, 98, 47, 0.10);
+  --color-accent-a20: rgba(192, 98, 47, 0.20);
+  --color-accent-a30: rgba(192, 98, 47, 0.30);
+  --color-text-a06: rgba(45, 30, 15, 0.06);
+  --color-text-a10: rgba(45, 30, 15, 0.10);
+  --color-muted-a20: rgba(138, 106, 82, 0.20);
+}
+
+// Navy-blue theme
+[data-theme="navy"] {
+  --color-bg: #0d1b2a;
+  --color-surface: #1b2d45;
+  --color-accent: #5b9bd5;
+  --color-text: #dce8f5;
+  --color-muted: #7fa8cb;
+  --color-accent-a08: rgba(91, 155, 213, 0.08);
+  --color-accent-a10: rgba(91, 155, 213, 0.10);
+  --color-accent-a20: rgba(91, 155, 213, 0.20);
+  --color-accent-a30: rgba(91, 155, 213, 0.30);
+  --color-text-a06: rgba(220, 232, 245, 0.06);
+  --color-text-a10: rgba(220, 232, 245, 0.10);
+  --color-muted-a20: rgba(127, 168, 203, 0.20);
+}
+
 $font-arabic: 'Noto Naskh Arabic', serif;
 
 // Reset
@@ -23,8 +49,8 @@ html {
 
 body {
   font-family: $font-arabic;
-  background-color: $color-bg;
-  color: $color-text;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.8;
   min-height: 100vh;
   display: flex;
@@ -48,8 +74,8 @@ ul {
 
 // Navigation
 .nav {
-  background-color: $color-surface;
-  border-block-end: 2px solid rgba($color-accent, 0.2);
+  background-color: var(--color-surface);
+  border-block-end: 2px solid var(--color-accent-a20);
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
@@ -67,7 +93,7 @@ ul {
   &__logo {
     font-size: 1.4rem;
     font-weight: 700;
-    color: $color-accent;
+    color: var(--color-accent);
   }
 
   &__links {
@@ -76,11 +102,11 @@ ul {
 
     a {
       font-size: 0.95rem;
-      color: $color-muted;
+      color: var(--color-muted);
       transition: color 0.2s;
 
       &:hover {
-        color: $color-accent;
+        color: var(--color-accent);
       }
     }
   }
@@ -102,7 +128,7 @@ ul {
 
   h1 {
     font-size: 2.5rem;
-    color: $color-accent;
+    color: var(--color-accent);
     margin-block-end: 1.5rem;
   }
 }
@@ -114,21 +140,21 @@ ul {
   input {
     width: 100%;
     padding: 0.8rem 1.2rem;
-    border: 2px solid rgba($color-accent, 0.3);
+    border: 2px solid var(--color-accent-a30);
     border-radius: 8px;
     font-family: $font-arabic;
     font-size: 1rem;
-    background: $color-surface;
-    color: $color-text;
+    background: var(--color-surface);
+    color: var(--color-text);
     transition: border-color 0.2s;
 
     &:focus {
       outline: none;
-      border-color: $color-accent;
+      border-color: var(--color-accent);
     }
 
     &::placeholder {
-      color: $color-muted;
+      color: var(--color-muted);
     }
   }
 }
@@ -143,15 +169,15 @@ ul {
 
 // Recipe Card
 .recipe-card {
-  background: $color-surface;
+  background: var(--color-surface);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba($color-text, 0.06);
+  box-shadow: 0 2px 8px var(--color-text-a06);
   transition: transform 0.2s, box-shadow 0.2s;
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba($color-text, 0.1);
+    box-shadow: 0 6px 20px var(--color-text-a10);
   }
 
   a {
@@ -172,7 +198,7 @@ ul {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba($color-accent, 0.08);
+      background: var(--color-accent-a08);
       font-size: 3rem;
     }
   }
@@ -197,8 +223,8 @@ ul {
 // Tags
 .tag {
   display: inline-block;
-  background: rgba($color-accent, 0.1);
-  color: $color-accent;
+  background: var(--color-accent-a10);
+  color: var(--color-accent);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -216,7 +242,7 @@ ul {
 
   h1 {
     font-size: 2rem;
-    color: $color-accent;
+    color: var(--color-accent);
   }
 }
 
@@ -240,7 +266,7 @@ ul {
 
   &__title {
     font-size: 2.2rem;
-    color: $color-accent;
+    color: var(--color-accent);
     margin-block-end: 0.8rem;
   }
 
@@ -262,7 +288,7 @@ ul {
   }
 
   &__ingredients {
-    background: $color-surface;
+    background: var(--color-surface);
     padding: 1.5rem;
     border-radius: 12px;
     position: sticky;
@@ -274,10 +300,10 @@ ul {
 
     h2 {
       font-size: 1.2rem;
-      color: $color-accent;
+      color: var(--color-accent);
       margin-block-end: 1rem;
       padding-block-end: 0.5rem;
-      border-block-end: 2px solid rgba($color-accent, 0.2);
+      border-block-end: 2px solid var(--color-accent-a20);
     }
 
     ul {
@@ -287,14 +313,14 @@ ul {
 
     li {
       margin-block-end: 0.5rem;
-      color: $color-text;
+      color: var(--color-text);
     }
   }
 
   &__steps {
     h2 {
       font-size: 1.4rem;
-      color: $color-accent;
+      color: var(--color-accent);
       margin-block-end: 1rem;
     }
 
@@ -318,11 +344,11 @@ ul {
 .related-recipes {
   margin-block-start: 3rem;
   padding-block-start: 2rem;
-  border-block-start: 2px solid rgba($color-accent, 0.1);
+  border-block-start: 2px solid var(--color-accent-a10);
 
   h2 {
     font-size: 1.4rem;
-    color: $color-accent;
+    color: var(--color-accent);
     margin-block-end: 1rem;
   }
 }
@@ -333,7 +359,7 @@ ul {
 
   h1 {
     font-size: 2rem;
-    color: $color-accent;
+    color: var(--color-accent);
     margin-block-end: 1.5rem;
   }
 
@@ -350,15 +376,15 @@ ul {
       padding: 0.8rem 1.2rem;
       padding-inline-start: 2.5rem;
       padding-inline-end: 4rem;
-      border: 2px solid rgba($color-accent, 0.3);
+      border: 2px solid var(--color-accent-a30);
       border-radius: 8px;
-      background: $color-surface;
+      background: var(--color-surface);
       width: 100%;
       direction: rtl;
 
       &:focus {
         outline: none;
-        border-color: $color-accent;
+        border-color: var(--color-accent);
       }
     }
 
@@ -371,16 +397,16 @@ ul {
 
     .pagefind-ui__result {
       padding: 1rem 0;
-      border-block-end: 1px solid rgba($color-muted, 0.2);
+      border-block-end: 1px solid var(--color-muted-a20);
     }
 
     .pagefind-ui__result-title {
       font-weight: 600;
-      color: $color-accent;
+      color: var(--color-accent);
     }
 
     .pagefind-ui__result-excerpt {
-      color: $color-muted;
+      color: var(--color-muted);
       margin-block-start: 0.3rem;
     }
   }
@@ -388,8 +414,8 @@ ul {
 
 // Footer
 .footer {
-  background: $color-surface;
-  border-block-start: 2px solid rgba($color-accent, 0.1);
+  background: var(--color-surface);
+  border-block-start: 2px solid var(--color-accent-a10);
   padding: 1.5rem 2rem;
   margin-block-start: auto;
 
@@ -397,8 +423,26 @@ ul {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
-    color: $color-muted;
+    color: var(--color-muted);
     font-size: 0.9rem;
+  }
+}
+
+// Theme Toggle Button
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--color-accent-a30);
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 0.3rem 0.7rem;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-muted);
+  transition: border-color 0.2s, color 0.2s;
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 }
 

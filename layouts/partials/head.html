@@ -3,6 +3,9 @@
 <title>{{ if .IsHome }}{{ i18n "site_title" }}{{ else }}{{ .Title }} — {{ i18n "site_title" }}{{ end }}</title>
 <meta name="description" content="{{ with .Params.ingredients }}{{ delimit . "، " }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
 
+{{/* Theme: apply saved theme early to avoid flash */}}
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+
 {{/* Open Graph */}}
 <meta property="og:title" content="{{ .Title }}" />
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />

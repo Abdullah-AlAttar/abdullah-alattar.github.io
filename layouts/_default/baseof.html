@@ -9,5 +9,27 @@
     {{- block "main" . }}{{- end }}
   </main>
   {{- partial "footer.html" . -}}
+  <script>
+    (function () {
+      var btn = document.getElementById('theme-toggle');
+      var root = document.documentElement;
+      function update() {
+        var isNavy = root.getAttribute('data-theme') === 'navy';
+        btn.textContent = isNavy ? '☀️' : '🌙';
+      }
+      update();
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'navy' ? '' : 'navy';
+        if (next) {
+          root.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        } else {
+          root.removeAttribute('data-theme');
+          localStorage.removeItem('theme');
+        }
+        update();
+      });
+    })();
+  </script>
 </body>
 </html>

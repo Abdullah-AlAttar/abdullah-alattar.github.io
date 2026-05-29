@@ -103,3 +103,4 @@ GitHub Actions يبني الموقع ويفهرس البحث وينشر تلقا
 ## النشر
 
 الموقع ينشر تلقائياً على GitHub Pages عند كل push لـ branch الـ `master`.
+

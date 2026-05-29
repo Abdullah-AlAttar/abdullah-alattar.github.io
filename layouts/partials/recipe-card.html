@@ -1,0 +1,25 @@
+<article class="recipe-card">
+  <a href="{{ .RelPermalink }}">
+    {{ $image := .Resources.GetMatch "featured*" }}
+    {{ if $image }}
+    {{ $thumb := $image.Fill "400x300 webp" }}
+    <div class="recipe-card__image">
+      <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" loading="lazy" />
+    </div>
+    {{ else }}
+    <div class="recipe-card__image recipe-card__image--placeholder">
+      <span>🍽️</span>
+    </div>
+    {{ end }}
+    <div class="recipe-card__body">
+      <h3 class="recipe-card__title">{{ .Title }}</h3>
+      {{ with .Params.tags }}
+      <div class="recipe-card__tags">
+        {{ range first 3 . }}
+        <span class="tag tag--small">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </a>
+</article>

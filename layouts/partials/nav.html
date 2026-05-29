@@ -1,0 +1,11 @@
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="{{ site.Home.RelPermalink }}" class="nav__logo">{{ i18n "site_title" }}</a>
+    <ul class="nav__links">
+      <li><a href="{{ site.Home.RelPermalink }}">{{ i18n "home" }}</a></li>
+      <li><a href="{{ "recipes/" | relURL }}">{{ i18n "all_recipes" }}</a></li>
+      <li><a href="{{ "tags/" | relURL }}">{{ i18n "tags" }}</a></li>
+      <li><a href="{{ "search/" | relURL }}">{{ i18n "search_title" }}</a></li>
+    </ul>
+  </div>
+</nav>

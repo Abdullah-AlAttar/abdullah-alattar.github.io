@@ -1,0 +1,408 @@
+// Design Tokens
+$color-bg: #fdf6ee;
+$color-surface: #fff8f0;
+$color-accent: #c0622f;
+$color-text: #2d1e0f;
+$color-muted: #8a6a52;
+$font-arabic: 'Noto Naskh Arabic', serif;
+
+// Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Base
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-arabic;
+  background-color: $color-bg;
+  color: $color-text;
+  line-height: 1.8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+// Navigation
+.nav {
+  background-color: $color-surface;
+  border-block-end: 2px solid rgba($color-accent, 0.2);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  &__logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $color-accent;
+  }
+
+  &__links {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+      font-size: 0.95rem;
+      color: $color-muted;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $color-accent;
+      }
+    }
+  }
+}
+
+// Main
+.main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+// Hero (Homepage)
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+
+  h1 {
+    font-size: 2.5rem;
+    color: $color-accent;
+    margin-block-end: 1.5rem;
+  }
+}
+
+.search-bar {
+  max-width: 500px;
+  margin: 0 auto;
+
+  input {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid rgba($color-accent, 0.3);
+    border-radius: 8px;
+    font-family: $font-arabic;
+    font-size: 1rem;
+    background: $color-surface;
+    color: $color-text;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $color-accent;
+    }
+
+    &::placeholder {
+      color: $color-muted;
+    }
+  }
+}
+
+// Recipes Grid
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding-block: 2rem;
+}
+
+// Recipe Card
+.recipe-card {
+  background: $color-surface;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba($color-text, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba($color-text, 0.1);
+  }
+
+  a {
+    display: block;
+  }
+
+  &__image {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba($color-accent, 0.08);
+      font-size: 3rem;
+    }
+  }
+
+  &__body {
+    padding: 1rem 1.2rem;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-block-end: 0.5rem;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+}
+
+// Tags
+.tag {
+  display: inline-block;
+  background: rgba($color-accent, 0.1);
+  color: $color-accent;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  &--small {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+  }
+}
+
+// Page Header
+.page-header {
+  padding-block: 2rem 1rem;
+
+  h1 {
+    font-size: 2rem;
+    color: $color-accent;
+  }
+}
+
+// Recipe Single Page
+.recipe {
+  &__hero {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-block-end: 2rem;
+
+    img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+    }
+  }
+
+  &__header {
+    margin-block-end: 2rem;
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    color: $color-accent;
+    margin-block-end: 0.8rem;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__ingredients {
+    background: $color-surface;
+    padding: 1.5rem;
+    border-radius: 12px;
+    position: sticky;
+    top: 80px;
+
+    h2 {
+      font-size: 1.2rem;
+      color: $color-accent;
+      margin-block-end: 1rem;
+      padding-block-end: 0.5rem;
+      border-block-end: 2px solid rgba($color-accent, 0.2);
+    }
+
+    ul {
+      list-style: disc;
+      padding-inline-start: 1.2rem;
+    }
+
+    li {
+      margin-block-end: 0.5rem;
+      color: $color-text;
+    }
+  }
+
+  &__steps {
+    h2 {
+      font-size: 1.4rem;
+      color: $color-accent;
+      margin-block-end: 1rem;
+    }
+
+    ol {
+      padding-inline-start: 1.5rem;
+    }
+
+    li {
+      margin-block-end: 1rem;
+      line-height: 2;
+    }
+
+    p {
+      margin-block-end: 1rem;
+      line-height: 2;
+    }
+  }
+}
+
+// Related Recipes
+.related-recipes {
+  margin-block-start: 3rem;
+  padding-block-start: 2rem;
+  border-block-start: 2px solid rgba($color-accent, 0.1);
+
+  h2 {
+    font-size: 1.4rem;
+    color: $color-accent;
+    margin-block-end: 1rem;
+  }
+}
+
+// Search Page
+.search-page {
+  padding-block: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    color: $color-accent;
+    margin-block-end: 1.5rem;
+  }
+
+  #search {
+    max-width: 600px;
+
+    .pagefind-ui__form {
+      position: relative;
+    }
+
+    .pagefind-ui__search-input {
+      font-family: $font-arabic;
+      font-size: 1rem;
+      padding: 0.8rem 1.2rem;
+      padding-inline-start: 2.5rem;
+      padding-inline-end: 4rem;
+      border: 2px solid rgba($color-accent, 0.3);
+      border-radius: 8px;
+      background: $color-surface;
+      width: 100%;
+      direction: rtl;
+
+      &:focus {
+        outline: none;
+        border-color: $color-accent;
+      }
+    }
+
+    .pagefind-ui__search-clear {
+      inset-inline-end: 0.5rem;
+      inset-inline-start: auto;
+      right: auto;
+      left: 0.5rem;
+    }
+
+    .pagefind-ui__result {
+      padding: 1rem 0;
+      border-block-end: 1px solid rgba($color-muted, 0.2);
+    }
+
+    .pagefind-ui__result-title {
+      font-weight: 600;
+      color: $color-accent;
+    }
+
+    .pagefind-ui__result-excerpt {
+      color: $color-muted;
+      margin-block-start: 0.3rem;
+    }
+  }
+}
+
+// Footer
+.footer {
+  background: $color-surface;
+  border-block-start: 2px solid rgba($color-accent, 0.1);
+  padding: 1.5rem 2rem;
+  margin-block-start: auto;
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: $color-muted;
+    font-size: 0.9rem;
+  }
+}
+
+// Utility
+.page-content {
+  line-height: 2;
+
+  p {
+    margin-block-end: 1rem;
+  }
+}

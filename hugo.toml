@@ -1,0 +1,55 @@
+baseURL = "https://example.github.io/moms_recipes/"
+locale = "ar"
+title = "وصفات ماما"
+defaultContentLanguage = "ar"
+defaultContentLanguageInSubdir = false
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[languages]
+  [languages.ar]
+    label = "العربية"
+    weight = 1
+    direction = "rtl"
+    [languages.ar.params]
+      description = "وصفات ماما اللذيذة"
+  [languages.en]
+    label = "English"
+    weight = 2
+    direction = "ltr"
+    [languages.en.params]
+      description = "Mom's Delicious Recipes"
+
+[params]
+  colorBg = "#fdf6ee"
+  colorSurface = "#fff8f0"
+  colorAccent = "#c0622f"
+  colorText = "#2d1e0f"
+  colorMuted = "#8a6a52"
+
+[taxonomies]
+  tag = "tags"
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = true
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+
+[imaging]
+  quality = 85
+  resampleFilter = "Lanczos"
+  [imaging.exif]
+    disableLatLong = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[build]
+  [build.buildStats]
+    enable = true

@@ -1,0 +1,67 @@
+version: "3"
+
+vars:
+  HUGO_FLAGS: --minify
+
+tasks:
+  dev:
+    desc: Run Hugo development server (hot reload, no search)
+    cmds:
+    - hugo server {{.HUGO_FLAGS}} --navigateToChanged
+
+  build:
+    desc: Build the site and index for search
+    cmds:
+    - rm -rf public
+    - hugo {{.HUGO_FLAGS}}
+    - npx -y pagefind --site public
+    sources:
+    - content/**/*
+    - layouts/**/*
+    - assets/**/*
+    - hugo.toml
+    - i18n/*
+    generates:
+    - public/**/*
+
+  serve:
+    desc: Build with search index, then serve locally
+    cmds:
+      - rm -rf public
+      - hugo {{.HUGO_FLAGS}} --baseURL http://localhost:1313/
+      - npx -y pagefind --site public
+      - npx -y serve public -l 1313
+
+  new:
+    desc: "Create a new recipe (usage: task new -- recipe-slug)"
+    vars:
+      DATE:
+        sh: date +%Y-%m-%d
+    cmds:
+      - mkdir -p content/recipes/{{.CLI_ARGS}}
+      - |
+        printf '%s\n' \
+          '---' \
+          'title: ""' \
+          'date: {{.DATE}}' \
+          'tags: []' \
+          'ingredients:' \
+          '  - ""' \
+          '---' \
+          '' \
+          '## طريقة التحضير' \
+          '' \
+          '1. ' \
+          > content/recipes/{{.CLI_ARGS}}/index.ar.md
+      - 'echo "✅ Created content/recipes/{{.CLI_ARGS}}/index.ar.md"'
+      - 'echo "📷 Add a featured.jpg image in the same folder (optional)"'
+
+  clean:
+    desc: Remove build artifacts
+    cmds:
+    - rm -rf public resources/_gen
+
+  lint:
+    desc: Check for Hugo build warnings
+    cmds:
+    - hugo {{.HUGO_FLAGS}} 2>&1 | grep -i "warn\|error" || echo "✅ No warnings"

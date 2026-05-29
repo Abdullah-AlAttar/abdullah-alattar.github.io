@@ -1,0 +1,24 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ if .IsHome }}{{ i18n "site_title" }}{{ else }}{{ .Title }} — {{ i18n "site_title" }}{{ end }}</title>
+<meta name="description" content="{{ with .Params.ingredients }}{{ delimit . "، " }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+
+{{/* Open Graph */}}
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+{{ $ogImage := .Resources.GetMatch "featured*" }}
+{{ if $ogImage }}
+{{ $og := $ogImage.Fill "1200x630 webp" }}
+<meta property="og:image" content="{{ $og.Permalink }}" />
+{{ end }}
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}" />
+
+{{/* Fonts */}}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+
+{{/* Styles */}}
+{{ $style := resources.Get "scss/main.scss" | css.Sass (dict "outputStyle" "compressed") | fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />

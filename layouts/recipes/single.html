@@ -1,0 +1,51 @@
+{{ define "main" }}
+<article class="recipe" data-pagefind-body>
+  {{ $image := .Resources.GetMatch "featured*" }}
+  {{ if $image }}
+  <div class="recipe__hero">
+    {{ $hero := $image.Fill "1200x600 webp" }}
+    <img src="{{ $hero.RelPermalink }}" alt="{{ .Title }}" width="{{ $hero.Width }}" height="{{ $hero.Height }}" loading="eager" />
+  </div>
+  {{ end }}
+
+  <header class="recipe__header">
+    <h1 class="recipe__title">{{ .Title }}</h1>
+    {{ with .Params.tags }}
+    <div class="recipe__tags">
+      {{ range . }}
+      <a href="{{ "tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </header>
+
+  <div class="recipe__content">
+    {{ with .Params.ingredients }}
+    <aside class="recipe__ingredients">
+      <h2>{{ i18n "ingredients" }}</h2>
+      <ul>
+        {{ range . }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+    </aside>
+    {{ end }}
+
+    <div class="recipe__steps">
+      {{ .Content }}
+    </div>
+  </div>
+
+  {{ $related := .Site.RegularPages.Related . | first 3 }}
+  {{ with $related }}
+  <section class="related-recipes">
+    <h2>{{ i18n "related_recipes" }}</h2>
+    <div class="recipes-grid">
+      {{ range . }}
+      {{- partial "recipe-card.html" . -}}
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+</article>
+{{ end }}

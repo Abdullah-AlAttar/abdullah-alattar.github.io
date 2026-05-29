@@ -13,15 +13,15 @@ defaultContentLanguageInSubdir = false
   [languages.ar]
     label = "العربية"
     weight = 1
-    direction = "rtl"
     [languages.ar.params]
       description = "وصفات ماما اللذيذة"
+      direction = "rtl"
   [languages.en]
     label = "English"
     weight = 2
-    direction = "ltr"
     [languages.en.params]
       description = "Mom's Delicious Recipes"
+      direction = "ltr"
 
 [params]
   colorBg = "#fdf6ee"

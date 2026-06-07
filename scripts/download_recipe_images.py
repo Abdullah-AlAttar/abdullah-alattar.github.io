@@ -88,6 +88,7 @@ RECIPES = {
     "tasali-nescafe":        "nescafe coffee biscuit dessert",
     "tatbilt-jaj":           "chicken spice marinade",
     "waraq-inab-kousa":      "stuffed grape leaves zucchini",
+    "yabraq-mahshi-kusa":    "stuffed zucchini",
 }
 
 # ---------------------------------------------------------------------------

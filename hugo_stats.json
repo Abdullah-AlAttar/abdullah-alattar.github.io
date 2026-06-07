@@ -46,6 +46,7 @@
       "recipe-card",
       "recipe-card__body",
       "recipe-card__image",
+      "recipe-card__image--placeholder",
       "recipe-card__tags",
       "recipe-card__title",
       "recipe__content",

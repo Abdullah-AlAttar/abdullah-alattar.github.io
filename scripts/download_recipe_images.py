@@ -81,6 +81,7 @@ RECIPES = {
     "mitabbaq":              "mitabbaq eggplant tomato stew",
     "mujaddara":             "mujaddara lentils rice",
     "riz-bi-halib":          "rice pudding milk dessert",
+    "riz-ozbeki":            "uzbek rice pilaf meat raisins",
     "sahlab":                "sahlab hot milk drink",
     "shawarma-jaj":          "chicken shawarma wrap",
     "shorbet-adas":          "lentil soup bowl",

@@ -84,6 +84,7 @@ RECIPES = {
     "riz-ozbeki":            "uzbek rice pilaf meat raisins",
     "sahlab":                "sahlab hot milk drink",
     "shawarma-jaj":          "chicken shawarma wrap",
+    "shish-tawook":           "shish tawook grilled chicken skewers",
     "shorbet-adas":          "lentil soup bowl",
     "sous-banadora-basit":   "fresh tomato sauce",
     "sous-banadora-makarona":"pasta tomato sauce pan",

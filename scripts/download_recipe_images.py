@@ -51,6 +51,7 @@ DELAY = 0.5            # seconds between requests (be polite to the API)
 RECIPES = {
     "ajja":                  "egg omelette Arabic",
     "bameh-blahmeh":         "okra meat stew",
+    "basbousa-burtuqal":     "basbousa semolina cake syrup",
     "basbousa-qashta":       "basbousa cream semolina cake",
     "basbousa-sada":         "semolina cake Middle Eastern",
     "bazalia-bmara2a":       "peas meat stew",
